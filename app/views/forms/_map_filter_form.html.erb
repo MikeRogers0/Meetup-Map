@@ -1,0 +1,5 @@
+<%= bootstrap_form_for MapFilterForm.build, url: "#" do |f| %> 
+  <%= f.text_field :minus_keywords %>
+  <%= f.number_field :min_attendees %>
+  <%= f.submit %>
+<% end %>

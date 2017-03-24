@@ -1,0 +1,5 @@
+en:
+  helpers:
+    submit:
+      map_filter_form:
+        create: "Filter"

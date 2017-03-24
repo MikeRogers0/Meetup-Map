@@ -1,0 +1,8 @@
+en:
+  activemodel:
+    models:
+      map_filter_form: "Filter Form"
+    attributes:
+      map_filter_form:
+        minus_keywords: "Minus Keywords"
+        min_attendees: "Min Attendees"
