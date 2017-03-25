@@ -22,4 +22,24 @@ class MapFilterForm < ApplicationForm
       min_attendees: 5
     })
   end
+
+  def to_query
+    attributes.merge({
+      start_datetime: @start_datetime.to_i,
+      end_datetime: @end_datetime.to_i
+    }).to_query
+  end
+
+  def events
+    # Filter keywords / attendees 
+    Meetup::FindEvents.nearby({
+      lat: @latitude,
+      lon: @longitude,
+      format: 'json',
+      status: 'upcoming',
+      page: '1',
+      radius: @radius,
+      time: "#{@start_datetime.to_i * 1000},#{@end_datetime.to_i * 1000}"
+    })
+  end
 end

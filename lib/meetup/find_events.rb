@@ -1,5 +1,5 @@
 class Meetup::FindEvents < Meetup::BaseAPI
-  def self.nearby
+  def self.nearby attributes={}
     Meetup::FindEvents.new.get({
       lat: "51.5074",
       lon: "0.1278",
