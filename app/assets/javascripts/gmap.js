@@ -2,8 +2,8 @@ var map;
 function initGMap() {
   var gmapElm = document.getElementById('gmap');
   map = new google.maps.Map(gmapElm, {
-    center: {lat: 0, lng: 0},
-    zoom: 2
+    center: {lat: 51.5074, lng: 0.1278},
+    zoom: 10
   });
 
   loadKmlLayer(gmapElm.attributes["data-kml"].value, map);

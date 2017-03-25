@@ -1,7 +1,7 @@
-class Meetup::Events
+class Meetup::FindEvents < Meetup::BaseAPI
   def self.nearby
     @nearby ||= Rails.cache.fetch("/nearby/51.5074/0.1278", expires_in: 24.hours) do
-      @nearby ||= MeetupApi.new.find_events({
+      Meetup::FindEvents.new.get({
         lat: "51.5074",
         lon: "0.1278",
         format: 'json',
@@ -11,5 +11,10 @@ class Meetup::Events
         time: "#{Time.now.to_i * 1000},#{(Time.now.beginning_of_day + 5.day).to_i * 1000}"
       })
     end
+  end
+
+  private
+  def path
+    "/find/events"
   end
 end

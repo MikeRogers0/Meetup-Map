@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    raise Meetup::Events.nearby.inspect
+    #Meetup::FindEvents.nearby
   end
 end
