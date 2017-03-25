@@ -6,7 +6,7 @@ class Meetup::FindEvents < Meetup::BaseAPI
       format: 'json',
       status: 'upcoming',
       page: '1',
-      radius: '100',
+      radius: '25',
       time: "#{Time.now.to_i * 1000},#{(Time.now.beginning_of_day + 5.day).to_i * 1000}"
     })
   end
