@@ -17,6 +17,7 @@ function filterUpdate(){
   // Update the KML files
   var keys = $(".new_map_filter_form .form-control").serialize();
 
+  console.log(eventsURL + "?" + keys);
   loadKmlLayer(eventsURL + "?" + keys);
 }
 
