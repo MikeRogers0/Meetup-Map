@@ -1,5 +1,5 @@
 <%#= cache "/nearby/51.5074/0.1278", expires_in: 24.hours, skip_digest: true do %>
-  <% Meetup::FindEvents.nearby.each do |event| %>
+  <% ::Meetup::FindEvents.nearby.each do |event| %>
     <% if event["venue"].present? %>
       <Placemark id="<%= event["id"] %>">
         <name><%= event["venue"]["name"] %></name>
