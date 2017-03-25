@@ -1,11 +1,11 @@
 class MapFilterForm < ApplicationForm
   extend ModelAttribute
 
-  attribute :start_datetime, :datetime
-  attribute :end_datetime, :datetime
+  attribute :latitude, :string
+  attribute :longitude, :string
 
-  attribute :latitude, :float
-  attribute :longitude, :float
+  attribute :start_datetime, :time
+  attribute :end_datetime, :time
 
   attribute :radius, :integer
 
