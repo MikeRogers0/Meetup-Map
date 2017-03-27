@@ -7,9 +7,10 @@
         <description>
           <![CDATA[
             <p><%= event["venue"]["name"] %></p>
-            <p><%= Time.at(event["time"].to_i / 1000) %></p>
+            <p><%= event["time"].to_i / 1000 %></p>
+            <p><%= local_time(Time.at(event["time"].to_i / 1000)) %></p>
             <p>Guests: <%= event["yes_rsvp_count"] %></p>
-            <p><%= link_to event["group"]["name"], event["link"] %></p>
+            <p><%= link_to event["group"]["name"], event["link"], targer: "_blank" %></p>
             <%#= (event["description"] || "").html_safe %>
           ]]>
         </description>

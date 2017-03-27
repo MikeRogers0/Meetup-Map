@@ -40,6 +40,8 @@ class MapFilterForm < ApplicationForm
       page: '1',
       radius: @radius,
       time: "#{@start_datetime.to_i * 1000},#{@end_datetime.to_i * 1000}"
-    })
+    }).select do |event|
+      event["yes_rsvp_count"] >= @min_attendees
+    end
   end
 end

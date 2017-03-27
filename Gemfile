@@ -45,6 +45,8 @@ gem 'model_attribute'
 # Memcache
 gem 'dalli'
 
+gem 'local_time'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

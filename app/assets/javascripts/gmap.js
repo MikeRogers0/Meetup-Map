@@ -38,7 +38,8 @@ function filterUpdate(){
   var keys = $(".new_map_filter_form .form-control").serialize();
 
   console.log(eventsURL + "?" + keys);
-  loadKmlLayer(eventsURL + "?" + keys);
+  // Add the cache breaker
+  loadKmlLayer(eventsURL + "?" + keys + "&" + (new Date() * 1) );
 }
 
 function initGMap() {
