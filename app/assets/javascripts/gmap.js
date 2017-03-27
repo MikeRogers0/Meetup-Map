@@ -39,7 +39,7 @@ function filterUpdate(){
 
   console.log(eventsURL + "?" + keys);
   // Add the cache breaker
-  loadKmlLayer(eventsURL + "?" + keys + "&" + (new Date() * 1) );
+  loadKmlLayer(eventsURL + "?" + keys );
 }
 
 function initGMap() {
