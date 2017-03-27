@@ -71,8 +71,13 @@ function loadKmlLayer(src) {
   });
 
   google.maps.event.addListener(kmlLayer, 'click', function(event) {
+    var d = $("<div />").html(event.featureData.infoWindowHtml);
+    var localTime = moment(d.find('.local-time').text()).toDate()
+    d.find('.local-time').text(localTime);
+
     debugger;
-    //var content = event.featureData.infoWindowHtml;
+
+    event.featureData.infoWindowHtml = d.html();
   });
 
   //moment($('.local-time').text()).toDate()
