@@ -72,15 +72,11 @@ function loadKmlLayer(src) {
 
   google.maps.event.addListener(kmlLayer, 'click', function(event) {
     var d = $("<div />").html(event.featureData.infoWindowHtml);
-    var localTime = moment(d.find('.local-time').text()).toDate()
-    d.find('.local-time').text(localTime);
-
-    debugger;
+    var localTime = moment.utc(d.find('font').text()).toDate();
+    d.find('font').text(localTime);
 
     event.featureData.infoWindowHtml = d.html();
   });
-
-  //moment($('.local-time').text()).toDate()
 }
 
 $(document).ready(function(){
@@ -101,6 +97,10 @@ $(document).ready(function(){
   });
 
   $(".new_map_filter_form").on("submit", function(e){
+    if(kmlLayer != null){
+      kmlLayer.setMap(null);
+    }
+
     filterUpdate();
     return false;
   });
