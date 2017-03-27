@@ -61,14 +61,22 @@ function initGMap() {
   filterUpdate();
 }
 
-var kmlLayer = null
+var kmlLayers = [];
+
+function clearOverlays() {
+ while(kmlLayers.length > 0) { 
+   kmlLayers.pop().setMap(null);
+ }
+}
 
 function loadKmlLayer(src) {
-  kmlLayer = new google.maps.KmlLayer(src, {
+  var kmlLayer = new google.maps.KmlLayer(src, {
     suppressInfoWindows: false,
     preserveViewport: true,
     map: map
   });
+
+  kmlLayers.push(kmlLayer);
 
   google.maps.event.addListener(kmlLayer, 'click', function(event) {
     var d = $("<div />").html(event.featureData.infoWindowHtml);
@@ -97,10 +105,7 @@ $(document).ready(function(){
   });
 
   $(".new_map_filter_form").on("submit", function(e){
-    if(kmlLayer != null){
-      kmlLayer.setMap(null);
-    }
-
+    clearOverlays();
     filterUpdate();
     return false;
   });
