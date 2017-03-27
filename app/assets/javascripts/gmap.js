@@ -64,10 +64,6 @@ function initGMap() {
 var kmlLayer = null
 
 function loadKmlLayer(src) {
-  //if(kmlLayer != null){
-    //kmlLayer.setMap(null);
-  //}
-
   kmlLayer = new google.maps.KmlLayer(src, {
     suppressInfoWindows: false,
     preserveViewport: true,
