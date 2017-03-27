@@ -14,6 +14,6 @@ class EventsController < ApplicationController
 
   private
   def map_filter_form_params
-    params.require(:map_filter_form).permit(:latitude, :longitude, :start_datetime, :end_datetime, :minus_keywords, :radius, :min_attendees)
+    params.require(:map_filter_form).permit(:latitude, :longitude, :start_datetime, :end_datetime, :keywords, :minus_keywords, :radius, :min_attendees)
   end
 end

@@ -9,6 +9,7 @@ class MapFilterForm < ApplicationForm
 
   attribute :radius, :integer
 
+  attribute :keywords, :string
   attribute :minus_keywords, :string
   attribute :min_attendees, :integer
 
@@ -33,6 +34,7 @@ class MapFilterForm < ApplicationForm
   def events
     # Filter keywords / attendees 
     Meetup::FindEvents.nearby({
+      text: keywords,
       lat: @latitude,
       lon: @longitude,
       format: 'json',

@@ -6,6 +6,7 @@
   <%= f.date_field :start_datetime %>
   <%= f.date_field :end_datetime %>
   <hr />
+  <%= f.text_field :keywords %>
   <%= f.text_field :minus_keywords %>
   <%= f.number_field :radius, min: 1, max: 100, help: "In Miles" %>
   <%= f.number_field :min_attendees %>
