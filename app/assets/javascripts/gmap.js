@@ -73,6 +73,13 @@ function loadKmlLayer(src) {
     preserveViewport: true,
     map: map
   });
+
+  google.maps.event.addListener(kmlLayer, 'click', function(event) {
+    debugger;
+    //var content = event.featureData.infoWindowHtml;
+  });
+
+  //moment($('.local-time').text()).toDate()
 }
 
 $(document).ready(function(){
