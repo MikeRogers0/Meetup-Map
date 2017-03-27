@@ -1,12 +1,13 @@
 <%= bootstrap_form_for MapFilterForm.build, url: "#" do |f| %> 
   <%= f.number_field :latitude, step: "0.0001", max: "90", min: "-90"  %>
-  <%= f.number_field :longitude, step: "0.0001", max: "90", min: "-90" %>
+  <%= f.number_field :longitude, step: "0.0001", max: "180", min: "-180" %>
+  <%= link_to "🌐 Locate Me", "#", class: "locate-me btn btn-default" %>
   <hr />
   <%= f.date_field :start_datetime %>
   <%= f.date_field :end_datetime %>
   <hr />
   <%= f.text_field :minus_keywords %>
-  <%= f.range_field :radius, min: 1, max: 100 %>
+  <%= f.number_field :radius, min: 1, max: 100, help: "In Miles" %>
   <%= f.number_field :min_attendees %>
   <%= f.submit %>
 <% end %>

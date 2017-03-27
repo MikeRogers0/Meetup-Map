@@ -60,10 +60,40 @@ function initGMap() {
   filterUpdate();
 }
 
+var kmlLayer = null
+
 function loadKmlLayer(src) {
-  var kmlLayer = new google.maps.KmlLayer(src, {
+  if(kmlLayer != null){
+    kmlLayer.setMap(null);
+  }
+
+  kmlLayer = new google.maps.KmlLayer(src, {
     suppressInfoWindows: false,
     preserveViewport: true,
     map: map
   });
 }
+
+$(document).ready(function(){
+
+  $(".locate-me").on("click", function(e){
+    if (navigator.geolocation) {
+      $(".locate-me").attr("disabled", true);
+      navigator.geolocation.getCurrentPosition(function(position){
+        map.setCenter({lat: position.coords.latitude, lng: position.coords.longitude});
+        map.setZoom(12);
+        updateLatLng();
+        $(".locate-me").attr("disabled", false);
+      });
+    } else {
+      alert("No Geo support in your browser");
+    }
+    return false;
+  });
+
+  $(".new_map_filter_form").on("submit", function(e){
+    filterUpdate();
+    return false;
+  });
+
+});
