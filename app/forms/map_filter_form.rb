@@ -26,12 +26,12 @@ class MapFilterForm < ApplicationForm
 
   def start_datetime=value
     return unless value.present?
-    @start_datetime = Time.parse(value)
+    @start_datetime = Time.parse(value.to_s)
   end
 
   def end_datetime=value
     return unless value.present?
-    @end_datetime = Time.parse(value)
+    @end_datetime = Time.parse(value.to_s)
   end
 
   def to_query
