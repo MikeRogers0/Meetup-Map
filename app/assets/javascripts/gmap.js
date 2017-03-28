@@ -39,7 +39,7 @@ function filterUpdate(){
 
   console.log(eventsURL + "?" + keys);
   // Add the cache breaker
-  loadKmlLayer(eventsURL + "?" + keys );
+  loadKmlLayer(eventsURL + "?" + keys + "&" + (new Date() * 1) );
 }
 
 function initGMap() {
@@ -97,7 +97,10 @@ $(document).ready(function(){
         map.setZoom(12);
         updateLatLng();
         $(".locate-me").attr("disabled", false);
-      });
+      },function(e){
+        alert(e.message);
+        $(".locate-me").attr("disabled", false);
+      },{timeout:10000});
     } else {
       alert("No Geo support in your browser");
     }

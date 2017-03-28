@@ -4,15 +4,14 @@ class Meetup::FindEvents < Meetup::BaseAPI
       lat: "51.5074",
       lon: "0.1278",
       format: 'json',
-      status: 'upcoming',
       page: '1',
       radius: '25',
       time: "#{Time.now.to_i * 1000},#{(Time.now.beginning_of_day + 5.day).to_i * 1000}"
-    }.merge(attributes))
+    }.merge(attributes))["results"]
   end
 
   private
   def path
-    "/find/events"
+    "/2/open_events"
   end
 end
