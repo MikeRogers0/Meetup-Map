@@ -24,6 +24,16 @@ class MapFilterForm < ApplicationForm
     })
   end
 
+  def start_datetime=value
+    return unless value.present?
+    @start_datetime = Time.parse(value)
+  end
+
+  def end_datetime=value
+    return unless value.present?
+    @end_datetime = Time.parse(value)
+  end
+
   def to_query
     attributes.merge({
       start_datetime: @start_datetime.to_i,

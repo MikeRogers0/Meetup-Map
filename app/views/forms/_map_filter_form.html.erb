@@ -3,8 +3,8 @@
   <%= f.number_field :longitude, step: "0.0001", max: "180", min: "-180" %>
   <%= link_to "🌐 Locate Me", "#", class: "locate-me btn btn-default" %>
   <hr />
-  <%= f.date_field :start_datetime %>
-  <%= f.date_field :end_datetime %>
+  <%= f.date_field :start_datetime, type: "datetime-local" %>
+  <%= f.date_field :end_datetime, type: "datetime-local" %>
   <hr />
   <%= f.text_field :keywords %>
   <%= f.text_field :minus_keywords %>
