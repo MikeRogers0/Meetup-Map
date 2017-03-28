@@ -1,20 +1,22 @@
 <%= cache "/nearby/#{@map_filter_form.to_query}", expires_in: 24.hours, skip_digest: true do %>
   <% @map_filter_form.events.each do |event| %>
-    <Placemark id="<%= event["id"] %>">
-      <name><%= event["name"] %></name>
-      <styleUrl>#paddle</styleUrl>
-      <description>
-        <![CDATA[
-          <p><%= event["name"] %></p>
-          <p><font><%= Time.at(event["time"].to_i / 1000) %></font></p>
-          <p>Guests: <%= event["yes_rsvp_count"] %></p>
-          <p><%= link_to event["group"]["name"], event["event_url"], targer: "_blank" %></p>
-          <%#= (event["description"] || "").html_safe %>
-        ]]>
-      </description>
-      <Point>
-        <coordinates><%= event["group"]["group_lon"] %>,<%= event["group"]["group_lon"] %></coordinates>
-      </Point>
-    </Placemark>
+    <% if event["venue"].present? %>
+      <Placemark id="<%= event["id"] %>">
+        <name><%= event["name"] %></name>
+        <styleUrl>#paddle</styleUrl>
+        <description>
+          <![CDATA[
+            <p><%= event["name"] %></p>
+            <p><font><%= Time.at(event["time"].to_i / 1000) %></font></p>
+            <p>Guests: <%= event["yes_rsvp_count"] %></p>
+            <p><%= link_to event["group"]["name"], event["event_url"], targer: "_blank" %></p>
+            <%#= (event["description"] || "").html_safe %>
+          ]]>
+        </description>
+        <Point>
+          <coordinates><%= event["venue"]["lon"] %>,<%= event["venue"]["lat"] %></coordinates>
+        </Point>
+      </Placemark>
+    <% end %>
   <% end %>
 <% end %>

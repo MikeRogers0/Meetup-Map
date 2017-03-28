@@ -6,7 +6,8 @@ class Meetup::FindEvents < Meetup::BaseAPI
       format: 'json',
       page: '1',
       radius: '25',
-      time: "#{Time.now.to_i * 1000},#{(Time.now.beginning_of_day + 5.day).to_i * 1000}"
+      time: "#{Time.now.to_i * 1000},#{(Time.now.beginning_of_day + 5.day).to_i * 1000}",
+      fields: "venue"
     }.merge(attributes))["results"]
   end
 
