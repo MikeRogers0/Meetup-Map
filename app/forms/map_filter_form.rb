@@ -37,9 +37,6 @@ class MapFilterForm < ApplicationForm
       text: keywords,
       lat: @latitude,
       lon: @longitude,
-      format: 'json',
-      status: 'upcoming',
-      page: '1',
       radius: @radius,
       time: "#{@start_datetime.to_i * 1000},#{@end_datetime.to_i * 1000}"
     }).select do |event|
