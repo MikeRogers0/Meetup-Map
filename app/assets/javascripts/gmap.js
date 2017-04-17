@@ -62,7 +62,7 @@ function filterUpdate(){
   }, "LocationChange", "#"+latitude+","+longitude+"");
 
   // Update the KML files
-  var keys = $(".new_map_filter_form .form-control").serialize();
+  var keys = $(".new_map_filter_form .form-control, .new_map_filter_form .session-store").serialize();
 
   console.log(eventsURL + "?" + keys);
   // Add the cache breaker
