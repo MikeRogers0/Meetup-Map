@@ -45,8 +45,6 @@ function updateLatLng(){
 
   $('[name="map_filter_form[latitude]"]').val( latitude );
   $('[name="map_filter_form[longitude]"]').val( longitude );
-
-  filterUpdate();
 }
 
 function gmapDragEnd(){
@@ -104,6 +102,11 @@ function clearOverlays() {
 }
 
 function loadKmlLayer(src) {
+  // We have to many layers, remove the first one.
+  if( kmlLayers.length >= 4 ) {
+    kmlLayers.shift().setMap(null);
+  }
+
   var kmlLayer = new google.maps.KmlLayer(src, {
     suppressInfoWindows: false,
     preserveViewport: true,
@@ -130,6 +133,7 @@ $(document).ready(function(){
         map.setCenter({lat: position.coords.latitude, lng: position.coords.longitude});
         map.setZoom(12);
         updateLatLng();
+        filterUpdate();
         $(".locate-me").attr("disabled", false);
       },function(e){
         alert(e.message);
