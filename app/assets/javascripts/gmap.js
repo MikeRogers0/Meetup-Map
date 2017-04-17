@@ -2,12 +2,34 @@ var map;
 var eventsURL;
 var updateLatLngTimeout;
 
+  // Save Form, apart from dates.
+function saveFormData(){
+  $(".new_map_filter_form .session-store").each(function(){
+    localStorage[$(this).attr("name")] = $(this).val();
+  });
+  
+}
+
 function restoreFormData(){
-  $(".new_map_filter_form .form-control").each(function(){
+  // Start with local storage
+  $(".new_map_filter_form .session-store").each(function(){
     if( typeof(localStorage[$(this).attr("name")]) != "undefined"){
       $(this).val( localStorage[$(this).attr("name")] );
     }
   });
+
+  // Then the URL.
+  if( document.location.hash.length > 5 ) {
+    var locations = document.location.hash.replace("#", "");
+    locations = locations.split(",")
+
+    var latitude = locations[0];
+    var longitude = locations[1];
+
+    $('[name="map_filter_form[latitude]"]').val( latitude );
+    $('[name="map_filter_form[longitude]"]').val( longitude );
+  }
+
 }
 restoreFormData();
 
@@ -29,11 +51,16 @@ function gmapDragEnd(){
 }
 
 function filterUpdate(){
-  // Save Form, apart from dates.
-  $(".new_map_filter_form .form-control").each(function(){
-    localStorage[$(this).attr("name")] = $(this).val();
-  });
-  
+  saveFormData();
+
+  var latitude = parseInt(map.getCenter().lat() * 10000) / 10000;
+  var longitude = parseInt(map.getCenter().lng() * 10000) / 10000;
+
+  history.replaceState({
+    latitude: latitude,
+    longitude: longitude
+  }, "LocationChange", "#"+latitude+","+longitude+"");
+
   // Update the KML files
   var keys = $(".new_map_filter_form .form-control").serialize();
 
