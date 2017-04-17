@@ -3,7 +3,6 @@
     <% if event["venue"].present? %>
       <Placemark id="<%= event["id"] %>">
         <name><%= event["name"] %></name>
-        <styleUrl>#paddle</styleUrl>
         <description>
           <![CDATA[
             <p><%= event["name"] %></p>
