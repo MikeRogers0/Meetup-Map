@@ -37,6 +37,12 @@ function updateLatLng(){
   var latitude = parseInt(map.getCenter().lat() * 10000) / 10000;
   var longitude = parseInt(map.getCenter().lng() * 10000) / 10000;
 
+  // Nothing has changed! Moved on.
+  if ( $('[name="map_filter_form[latitude]"]').val() == latitude && 
+    $('[name="map_filter_form[longitude]"]').val() == longitude ) {
+    return true;
+  }
+
   $('[name="map_filter_form[latitude]"]').val( latitude );
   $('[name="map_filter_form[longitude]"]').val( longitude );
 
