@@ -1,3 +1,5 @@
+require 'net/http'
+
 class Meetup::BaseAPI
   BASE_URL = 'http://api.meetup.com/'
   CHARSET = 'UTF-8'
