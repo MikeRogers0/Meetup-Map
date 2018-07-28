@@ -1,6 +1,5 @@
 GEM
   remote: https://rubygems.org/
-  remote: https://rails-assets.org/
   specs:
     actioncable (5.2.0)
       actionpack (= 5.2.0)
@@ -112,7 +111,6 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.2.0)
       sprockets-rails (>= 2.0.0)
-    rails-assets-moment (2.22.2)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -190,7 +188,6 @@ DEPENDENCIES
   model_attribute
   puma (~> 3.0)
   rails (~> 5.0)
-  rails-assets-moment!
   sassc-rails
   spring
   spring-watcher-listen (~> 2.0.0)
