@@ -1,0 +1,11 @@
+{
+  "name": "MeetupMap",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:MikeRogers0/Meetup-Map.git",
+  "author": "Mike Rogers <me@mikerogers.io>",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.22.2"
+  }
+}
