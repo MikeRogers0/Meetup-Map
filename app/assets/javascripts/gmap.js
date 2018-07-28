@@ -148,6 +148,7 @@ $(document).ready(function(){
   $(".new_map_filter_form").on("submit", function(e){
     clearOverlays();
     filterUpdate();
+    e.preventDefault();
     return false;
   });
 

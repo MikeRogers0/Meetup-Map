@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.0"
 
-set :application, "MeetupMaps"
+set :application, "MeetupsMap"
 set :repo_url, "git@github.com:MikeRogers0/Meetup-Map.git"
 set :branch, ENV['BRANCH'] if ENV['BRANCH']
 
@@ -19,7 +19,7 @@ set :deploy_to, -> { "/home/ubuntu/var/www/#{fetch(:application)}" }
 set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, 'config/puma.rb', '.env', 'config/database.yml'
+append :linked_files, 'config/puma.rb', '.env', 'config/database.yml', 'db/production.sqlite3'
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
@@ -32,4 +32,4 @@ set :yarn_flags, '--production --silent --no-progress --ignore-engines'
 set :puma_conf, "#{shared_path}/config/puma.rb"
 
 # Nginx
-set :nginx_server_name, "meetup-maps.mikerogers.io"
+set :nginx_server_name, "meetups-map.mikerogers.io"
