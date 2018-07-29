@@ -63,6 +63,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano3-puma'
   gem 'capistrano-yarn'
+  gem 'capistrano-logrotate'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
